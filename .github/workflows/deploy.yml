@@ -20,7 +20,7 @@ jobs:
     - name: Deploy to Server 
       run: |
         ssh -o "StrictHostKeyChecking=no" ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-          cd /path/to/your/app
+          cd /root/cicd
           git pull
           docker build -t my-app .
           docker stop my-app || true
@@ -28,4 +28,3 @@ jobs:
           docker run -d --name my-app -p 80:3000 my-app
         EOF
 
-        
