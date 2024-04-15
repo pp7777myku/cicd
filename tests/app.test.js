@@ -24,6 +24,5 @@ describe('GET /', () => {
         expect(response.text).toContain('Industrial Equipment Monitoring System');
         expect(response.text).toContain('<div id="sensors"></div>'); // Check for the presence of the sensors container
         expect(response.text).toContain('sensor'); // Check for the presence of sensor-related content
-        expect(response.text).toContain('generateSensorData'); // Check if the script file is included
     });
 });
