@@ -1,3 +1,5 @@
+const request = require('supertest'); 
+
 describe('GET /', () => {
     it('responds with HTML containing system title, sensor-related content, and script file inclusion', async () => {
         const response = await request(app)
