@@ -1,4 +1,18 @@
-const request = require('supertest'); 
+const request = require('supertest');
+const app = require('../app');
+
+
+
+describe('GET static JavaScript file', () => {
+    it('responds with JavaScript file', async () => {
+        const response = await request(app)
+            .get('/script.js');
+
+        expect(response.status).toBe(200);
+        expect(response.type).toBe('application/javascript');
+        expect(response.text).toContain('generateSensorData');
+    });
+});
 
 describe('GET /', () => {
     it('responds with HTML containing system title, sensor-related content, and script file inclusion', async () => {
