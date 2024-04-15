@@ -22,3 +22,12 @@ if (require.main === module) {
 
 // 导出app供测试使用 
 module.exports = app;
+
+const { JSDOM } = require('jsdom');
+const fs = require('fs');
+const path = require('path');
+
+const html = fs.readFileSync(path.resolve(__dirname, '../public/index.html'), 'utf8');
+const { document } = (new JSDOM(html)).window;
+global.document = document;
+global.window = document.defaultView;

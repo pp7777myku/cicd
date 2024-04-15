@@ -1,8 +1,10 @@
+const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
-const html = fs.readFileSync(path.resolve(__dirname, '../public/index.html'), 'utf8');
 
-global.document = require('jsdom').jsdom(html);
+const html = fs.readFileSync(path.resolve(__dirname, '../public/index.html'), 'utf8');
+const { document } = (new JSDOM(html)).window;
+global.document = document;
 global.window = document.defaultView;
 
 // 引入你的脚本
